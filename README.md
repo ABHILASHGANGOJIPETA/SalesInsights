@@ -2,7 +2,7 @@
 
 ## 📌 Project Overview
 
-This project simulates a real-world business scenario where a computer hardware company (Atlware) struggled to understand its sales performance due to scattered reports and large Excel files. The goal was to transform raw transactional data into clear, interactive insights using SQL and Power BI.
+This project simulates a real-world business scenario where a computer hardware company (AtliQ) struggled to understand its sales performance due to scattered reports and large Excel files. The goal was to transform raw transactional data into clear, interactive insights using SQL and Power BI.
 
 The final outcome is an interactive Sales Insights Dashboard that enables management to monitor revenue, sales quantity, customer contribution, product performance, and trends over time.
 
