@@ -1,48 +1,166 @@
-# SalesInsights Data Analysis Project
+# Sales Insights Dashboard – Power BI Project
 
-### Data Analysis Using SQL
+## 📌 Project Overview
 
-1. Show all customer records
+This project simulates a real-world business scenario where a computer hardware company (Atlware) struggled to understand its sales performance due to scattered reports and large Excel files. The goal was to transform raw transactional data into clear, interactive insights using SQL and Power BI.
 
-    `SELECT * FROM customers;`
+The final outcome is an interactive Sales Insights Dashboard that enables management to monitor revenue, sales quantity, customer contribution, product performance, and trends over time.
 
-1. Show total number of customers
+---
 
-    `SELECT count(*) FROM customers;`
+## 🧩 Business Problem
 
-1. Show transactions for Chennai market (market code for chennai is Mark001
+The Sales Director was receiving verbal updates and large spreadsheets that were difficult to interpret. Because of this, the company could not:
 
-    `SELECT * FROM transactions where market_code='Mark001';`
+* Identify high and low performing markets
+* Track revenue trends
+* Understand customer and product contributions
+* Make timely data-driven decisions
 
-1. Show distrinct product codes that were sold in chennai
+The objective was to build a centralized dashboard providing accurate and real-time insights.
 
-    `SELECT distinct product_code FROM transactions where market_code='Mark001';`
+---
 
-1. Show transactions where currency is US dollars
+## 🎯 Project Objectives (AIMS Grid)
 
-    `SELECT * from transactions where currency="USD"`
+**Purpose:** Provide clear visibility into sales performance
+**Stakeholders:** Sales team, Marketing team, IT team, Leadership
+**End Result:** Interactive Power BI dashboard
+**Success Criteria:** Faster reporting and improved decision making
 
-1. Show transactions in 2020 join by date table
+---
 
-    `SELECT transactions.*, date.* FROM transactions INNER JOIN date ON transactions.order_date=date.date where date.year=2020;`
+## 📂 Dataset Description
 
-1. Show total revenue in year 2020,
+The dataset contains multiple related tables:
 
-    `SELECT SUM(transactions.sales_amount) FROM transactions INNER JOIN date ON transactions.order_date=date.date where date.year=2020 and transactions.currency="INR\r" or transactions.currency="USD\r";`
-	
-1. Show total revenue in year 2020, January Month,
+**Fact Table**
 
-    `SELECT SUM(transactions.sales_amount) FROM transactions INNER JOIN date ON transactions.order_date=date.date where date.year=2020 and and date.month_name="January" and (transactions.currency="INR\r" or transactions.currency="USD\r");`
+* Sales Transactions (~150K+ records)
+* Columns: Date, Sales Amount, Quantity, Product Code, Customer Code, Market Code, Currency
 
-1. Show total revenue in year 2020 in Chennai
+**Dimension Tables**
 
-    `SELECT SUM(transactions.sales_amount) FROM transactions INNER JOIN date ON transactions.order_date=date.date where date.year=2020
-and transactions.market_code="Mark001";`
+* Customers
+* Products
+* Markets
 
+This multi-table structure allowed real-world modeling and analysis.
 
-Data Analysis Using Power BI
-============================
+---
 
-1. Formula to create norm_amount column
+## 🛠 Tools & Technologies Used
 
-`= Table.AddColumn(#"Filtered Rows", "norm_amount", each if [currency] = "USD" or [currency] ="USD#(cr)" then [sales_amount]*75 else [sales_amount], type any)`
+* MySQL Workbench – Data exploration and validation
+* Power Query – Data cleaning and transformation (ETL)
+* Power BI – Data modeling, DAX measures, dashboard creation
+* DAX – Business metrics and KPIs
+
+---
+
+## 🔍 SQL Data Exploration
+
+Performed data profiling using SQL:
+
+* Joins between transactions, products, customers, and markets
+* Aggregations (SUM, COUNT)
+* Filtering using WHERE clause
+* Checking duplicates and invalid records
+
+This step helped understand data quality before visualization.
+
+---
+
+## 🔄 Data Cleaning (ETL Process)
+
+Handled in Power Query:
+
+* Removed invalid markets
+* Filtered negative and zero sales
+* Fixed duplicate transactions
+* Converted currency from USD to INR
+* Standardized data types
+
+---
+
+## 🧠 Data Modeling
+
+Implemented a Star Schema:
+
+* Fact Table: Sales Transactions
+* Dimension Tables: Customers, Products, Markets
+
+Benefits:
+
+* Faster query performance
+* Simplified DAX calculations
+* Better scalability
+
+---
+
+## 📊 DAX Measures Created
+
+* Total Revenue
+* Total Sales Quantity
+* Revenue Trends (Time-based analysis)
+* Top Customers
+* Top Products
+
+---
+
+## 📈 Dashboard Features
+
+* Revenue & Sales KPI Cards
+* Revenue by Market
+* Sales Quantity by Market
+* Monthly Revenue Trend
+* Top Customers
+* Top Products
+* Interactive Filters (Year & Month)
+* Mobile Layout Support
+
+---
+
+## 🔎 Key Insights
+
+* Delhi NCR contributed the highest revenue
+* Several markets generated negligible sales
+* Revenue declined after 2019
+* High dependency on a single customer
+* Product contribution imbalance detected
+
+---
+
+## 💼 Business Impact
+
+* Enabled data-driven decision making
+* Reduced manual reporting dependency
+* Identified underperforming markets
+* Highlighted revenue decline early
+* Improved communication across teams
+
+---
+
+## 🚀 How to Use
+
+1. Open the .pbix file in Power BI Desktop
+2. Refresh the dataset (if database connected)
+3. Interact with filters and visuals
+4. Publish to Power BI Service for sharing
+
+---
+
+## 🧾 Resume Highlights
+
+* Built end-to-end BI solution using SQL and Power BI
+* Implemented star schema data model
+* Performed ETL using Power Query
+* Created DAX measures for business KPIs
+* Generated actionable sales insights
+
+---
+
+## 👤 Author
+
+Abhilash Gangojipeta
+Data Analyst | Power BI | SQL
